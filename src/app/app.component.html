@@ -1,7 +1,24 @@
-<h1>Liste de Pokémons</h1>
+<h1 class="center">Liste de Pokémons</h1>
 
-<input #input (keyup.enter)="selectPokemon(input.value)" type="number" />
-
-<p *ngIf="pokemonSelected">Vous avez séléctionné : {{ pokemonSelected.name }}</p>
-
-<p *ngFor="let pokemon of pokemonList">{{ pokemon.name }}</p>
+<div class="container">
+	<div class="row">
+		<div *ngFor="let pokemon of pokemonList" class="col m4 s6">
+			<div class="card horizontal">
+				<div class="card-image">
+					<img [src]="pokemon.picture" />
+				</div>
+				<div class="card-stacked">
+					<div class="card-content">
+						<p>{{ pokemon.name }}</p>
+						<p>
+							<small>{{ pokemon.created | date : "dd/MM/yyyy" }}</small>
+						</p>
+					</div>
+					<div class="card-action">
+						<a (click)="selectPokemon(pokemon.id)" href="#">Séléctionner</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
