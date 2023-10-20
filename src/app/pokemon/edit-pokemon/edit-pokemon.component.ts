@@ -5,10 +5,10 @@ import { PokemonService } from '../pokemon.service';
 
 @Component({
   selector: 'app-pokemon-edit',
-  templateUrl: './pokemon-edit.component.html',
+  templateUrl: './edit-pokemon.component.html',
 })
 
-export class PokemonEditComponent implements OnInit {
+export class EditPokemonComponent implements OnInit {
   pokemon: Pokemon | undefined;
 
   constructor(private route: ActivatedRoute, private pokemonService: PokemonService) {}
@@ -17,7 +17,7 @@ export class PokemonEditComponent implements OnInit {
     let id: string | null = this.route.snapshot.paramMap.get('id');
 
     if(id) {
-      this.pokemon = this.pokemonService.getPokemonById(+id);
+      this.pokemonService.getPokemonById(+id).subscribe((pokemon) => (this.pokemon = pokemon));
     }
   }
 
