@@ -8,6 +8,7 @@ import { POKEMONS } from './mock-pokemon-list';
   templateUrl: 'app.component.html',
   styles: []
 })
+
 export class AppComponent implements OnInit {
   pokemonList: Pokemon[] = POKEMONS;
   pokemonSelected: Pokemon | undefined;
